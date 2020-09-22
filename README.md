@@ -1,28 +1,20 @@
 # You Only Watch Once (YOWO)
 
 ### UCF101-24
-<br/>
-<div align="center" style="width:image width px;">
-  <img  src="https://github.com/christina284/yowo/tree/master/examples/biking1.gif" width=240 alt="biking">
-  <img  src="https://github.com/christina284/yowo/tree/master/examples/walkingWithDog.gif" width=240 alt="walking with dog">
-</div>  
 
-<div align="center" style="width:image width px;">
-  <img  src="https://github.com/christina284/yowo/tree/master/examples/skate.gif" width=240 alt="skate">
-  <img  src="https://github.com/christina284/yowo/tree/master/examples/poleVault.gif" width=240 alt="pole vault">
-</div>
+![](https://github.com/christina284/YOWO-1/blob/master/biking1.gif)
+![](https://github.com/christina284/YOWO-1/blob/master/walkingWithDog.gif)
+![](https://github.com/christina284/YOWO-1/blob/master/skate.gif)
+![](https://github.com/christina284/YOWO-1/blob/master/poleVault.gif)
 
 ### JHMDB
-<div align="center" style="width:image width px;">
-  <img  src="https://github.com/christina284/yowo/tree/master/examples/run.gif" width=240 alt="run">
-</div>
+![](https://github.com/christina284/YOWO-1/blob/master/run.gif)
 
 
 PyTorch implementation of the article "[You Only Watch Once: A Unified CNN Architecture for Real-Time Spatiotemporal Action Localization](https://arxiv.org/pdf/1911.06644.pdf)".
 
 Networks used : Darknet, Resnet18
 
-mAP is slighlty lower than presented (probably due to training with Resnet18 instead of Resnext101): 71,34%
 
 Dataset: UCF101-24
 
