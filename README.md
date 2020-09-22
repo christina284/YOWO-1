@@ -3,7 +3,7 @@
 ### UCF101-24
 
 ![](https://github.com/christina284/YOWO-1/blob/master/biking1.gif)
-![](https://github.com/christina284/YOWO-1/blob/master/walkingWithDog.gif)
+![](https://github.com/christina284/YOWO-1/blob/master/walkingWIthDog.gif)
 ![](https://github.com/christina284/YOWO-1/blob/master/skate.gif)
 ![](https://github.com/christina284/YOWO-1/blob/master/poleVault.gif)
 
