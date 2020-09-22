@@ -499,7 +499,7 @@ def plot_boxes(img, boxes, savename=None, class_names=None):
             # green = get_color(1, offset, classes)
             # blue  = get_color(0, offset, classes)
             rgb = (0, 255, 0)
-            font = ImageFont.truetype('/usr/home/sut/yolo_jhmdb/font/OpenSans-Bold.ttf', 24)
+            # font = ImageFont.truetype('/usr/home/sut/yolo_jhmdb/font/OpenSans-Bold.ttf', 24)
             draw.text((x1 + 10, y1 + 5.0), class_names[cls_id], fill=rgb)
             draw.text((x1 + 10, y2 - 20.0), str(np.around(cls_conf.numpy(), decimals=3)),fill = rgb)
         draw.rectangle([x1, y1, x2, y2], outline = rgb, width=5)
