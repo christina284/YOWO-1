@@ -1,19 +1,7 @@
-# from utils import do_detect
-# from opts import parse_opts
-# from PIL import Image
-# import matplotlib.pyplot as plt
-# from model import YOWO
-# from train import test
-#
-#
-# import torch
-# if __name__ == '__main__':
-# image_path = '/mnt/terabyte/datasets/tiger'
-# img = [cv2.imread(os.path.join(image_path, i)) for i in os.listdir(image_path)]
-# img =[cv2.resize(i, (320, 240)) for i in img]
-# opt = parse_opts()
-# test(2)
 from __future__ import print_function
+
+import nvidia_smi
+
 import sys, os, time
 import random
 import math
@@ -233,12 +221,14 @@ def post_process(images, bboxs):
 if __name__ == '__main__':
     duration = 16
     num_sample = 8
-    pretrained_path = '/mnt/terabyte/chris_data/repos/YOWO/backup/yowo_ucf101-24_16f_best.pth'
-    # video_path = '/mnt/terabyte/datasets/ucf24/videos/SkateBoarding/v_SkateBoarding_g25_c05.avi'
-
+    pretrained_path = '/mnt/terabyte/chris_data/repos/YOWO-1/backup/yowo_ucf101-24_16f_best.pth'
     # load parameters
     opt, region_loss = get_config()
     video_path = opt.video_path
+    if video_path == '':
+        video_path = '/mnt/terabyte/datasets/ucf24/videos/SalsaSpin/v_SalsaSpin_g25_c04.avi'
+
+
     # load model
     model, epoch, fscore = load_model(opt, pretrained_path)
     # read video
@@ -247,7 +237,7 @@ if __name__ == '__main__':
     h = int(video.get(4))  # float
 
     fourcc = cv.VideoWriter_fourcc(*'XVID')
-    out = cv.VideoWriter('output.avi', fourcc, 30.0, (w, h))
+    out = cv.VideoWriter('output.avi', fourcc, 32.0, (w, h))
 
     stack = []
     n = 0
@@ -282,3 +272,14 @@ if __name__ == '__main__':
 
     out.release()
     video.release()
+
+    nvidia_smi.nvmlInit()
+    handle = nvidia_smi.nvmlDeviceGetHandleByIndex(0)
+    # card id 0 hardcoded here, there is also a call to get all available card ids, so we could iterate
+
+    res = nvidia_smi.nvmlDeviceGetUtilizationRates(handle)
+    print(f'gpu: {res.gpu}%, gpu-mem: {res.memory}%')
+    mem_res = nvidia_smi.nvmlDeviceGetMemoryInfo(handle)
+    print(f'mem: {mem_res.used / (1024**2)} (GiB)') # usage in GiB
+    print(f'mem: {100 * (mem_res.used / mem_res.total):.3f}%') # percentage usage
+
