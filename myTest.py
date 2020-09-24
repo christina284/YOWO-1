@@ -189,8 +189,8 @@ def post_process(images, bboxs):
         if float(score) < conf_thresh:
             continue
 
-        a = 240/h
-        b = 320/w
+        a = h/240
+        b = w/320
         proposals.append(
             [int(int(float(x1)) * a), int(int(float(y1)) * b), int(int(float(x2)) * a),
              int(int(float(y2)) * b), float(score),
@@ -226,7 +226,7 @@ if __name__ == '__main__':
     opt, region_loss = get_config()
     video_path = opt.video_path
     if video_path == '':
-        video_path = '/mnt/terabyte/datasets/ucf24/videos/SalsaSpin/v_SalsaSpin_g25_c04.avi'
+        video_path = '/mnt/terabyte/chris_data/repos/YOWO-1/action_test_smarthome/grid_20200702_125317.avi'
 
 
     # load model
@@ -237,7 +237,7 @@ if __name__ == '__main__':
     h = int(video.get(4))  # float
 
     fourcc = cv.VideoWriter_fourcc(*'XVID')
-    out = cv.VideoWriter('output.avi', fourcc, 32.0, (w, h))
+    out = cv.VideoWriter('results/'+ os.path.split(video_path)[1], fourcc, 30.0, (w, h))
 
     stack = []
     n = 0
